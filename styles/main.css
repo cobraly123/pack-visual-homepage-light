@@ -500,6 +500,7 @@ section {
     position: relative;
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(160, 64, 240, 0.08);
+    height: 530px;
 }
 
 .solution-content::before {
