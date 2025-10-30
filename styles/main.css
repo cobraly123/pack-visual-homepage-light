@@ -351,6 +351,16 @@ section {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    align-items: center;
+    width: 100%;
+}
+
+.pain-card-content img {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 12px;
+    object-fit: contain;
 }
 
 .pain-card-content strong {
@@ -1195,6 +1205,10 @@ section {
     
     .pain-card-item {
         padding: 20px;
+    }
+    
+    .pain-card-content img {
+        max-width: 100px;
     }
     
     .section-visual h3 {
