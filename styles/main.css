@@ -356,8 +356,8 @@ section {
 }
 
 .pain-card-content img {
-    width: 100%;
-    max-width: 120px;
+    width: 160%;
+    max-width: 160px;
     height: auto;
     margin-bottom: 12px;
     object-fit: contain;
@@ -495,7 +495,7 @@ section {
     background: #FFFFFF;
     border-radius: 20px;
     border: 1px solid rgba(160, 64, 240, 0.15);
-    padding: 60px 40px 30px 40px;
+    padding: 48px 40px;
     transition: all 0.3s ease-out;
     position: relative;
     overflow: hidden;
@@ -700,7 +700,7 @@ section {
 }
 
 .card-subtitle {
-    font-size: 16px;
+    font-size: 18px;
     color: #2D2438;
     margin-bottom: 12px;
     font-weight: 600;
@@ -720,8 +720,8 @@ section {
     margin-bottom: 12px;
     padding-left: 20px;
     position: relative;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 2.2;
 }
 
 .feature-list li::before {
@@ -975,6 +975,8 @@ section {
     color: #2D2438;
     margin-bottom: 16px;
     font-size: 18px;
+    text-align: center;
+    width: 100%;
 }
 
 /* User Journey Section */
