@@ -76,6 +76,49 @@ p {
     overflow: hidden;
 }
 
+/* Language Switcher */
+.language-switcher {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.15);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: #6B5B7A;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    color: #7C3AED;
+    background: rgba(124, 58, 237, 0.1);
+}
+
+.lang-btn.active {
+    color: #7C3AED;
+    background: linear-gradient(110deg, #EDE9FE, #DDD6FE);
+}
+
+.lang-divider {
+    color: #C4B5FD;
+    font-weight: 300;
+}
+
 .btn-primary {
     background: linear-gradient(110deg, #A78BFA, #C084FC, #E9D5FF)
     ;
@@ -1592,5 +1635,17 @@ button:focus {
     
     .modal-subtitle {
         font-size: 14px;
+    }
+    
+    /* Language Switcher on Mobile */
+    .language-switcher {
+        top: 16px;
+        right: 16px;
+        padding: 6px 12px;
+    }
+    
+    .lang-btn {
+        font-size: 13px;
+        padding: 3px 6px;
     }
 }
