@@ -22,33 +22,27 @@ const translations = {
         painBrandTitle: '对于品牌方与设计师',
         painSupplierTitle: '对于包材商',
         painCard1Title: '低效寻源',
-        painCard1Desc: '海量信息淙没需求，难以高效锁定可靠供应商。',
         painCard2Title: '沟通鸿沟',
-        painCard2Desc: '创意与技术规格脱节，反复沟通导致信息失真。',
         painCard3Title: '合规陷阱',
-        painCard3Desc: '难以高效核实供应商的质量与可持续性认证。',
         painCard4Title: '获客昂贵',
-        painCard4Desc: '传统展会的成本高昂，销售渠道较分散，回报率低。',
         painCard5Title: '曝光受限',
-        painCard5Desc: '营销的传播区域受限，难以精准触达全球高价值买家。',
         painCard6Title: '价值难现',
-        painCard6Desc: '复杂的装饰工艺和创新材料无法被直观、动态地展示。',
         
         // Solutions Section
         solutionTitle: 'Packvisual：以智能与协同，重构供需两端',
         solutionSubtitle: '我们通过三大核心支柱，打破信息孤岛，建立高效透明的B2B新生态。',
         pillar1Title: 'AI智能B2B商机引擎 - 线上寻源',
         pillar1Subtitle: '不再盲目搜索，直接精准对接',
-        pillar1Desc: '为品牌商提供高效AI搜索，帮包材商连接高价值商机',
-        pillar1Feature1: '导入图片或参数，AI智能寻源即刺为您精准匹配全球包材商',
-        pillar1Feature2: '海量包材数据覆盖所有参数，让您筛选比价一步到位',
-        pillar1Feature3: '平台直连买家与包材商，打破信息壁垒，让您轻松获取一手报价',
+        pillar1Feature1: '导入图片或参数，AI智能寻源即刺为您精准匹配全球包材商.',
+        pillar1Feature2: '海量包材数据覆盖所有参数，让您筛选比价一步到位.',
+        pillar1Feature3: '平台直连买家与包材商，打破信息壁垒，让您轻松获取一手报价.',
         pillar2Title: '革命性的3D配置器 - 在线协同',
         pillar2Subtitle: '静态浏览启航，动态设计连接',
-        pillar2Feature1: '云端3D包材，实时编辑颜色工艺配件，所见即所得',
-        pillar2Feature2: '一键分享设计配置，云端协同，提升沟通效率',
-        pillar2Feature3: '美妆包材视觉化需求，告别无效询盘，精准报价',
+        pillar2Feature1: '云端3D包材，实时编辑颜色工艺配件，所见即所得.',
+        pillar2Feature2: '一键分享设计配置，云端协同，提升沟通效率.',
+        pillar2Feature3: '美妆包材视觉化需求，告别无效询盘，精准报价.',
         pillar3Title: '移动产品销售型录 - 线下赋能',
+        pillar3Subtitle: '打通物理世界与数字协同的最后一公里',
         pillar3Feature1: '线下销售拜访与展会，移动端轻松呈现全系产品',
         pillar3Feature2: '智能物理样瓶，直连云端3D展示，客户感受更为直观',
         pillar3Feature3: '虚拟样瓶快速定制，精准设计表达，加速商机成交',
@@ -73,15 +67,15 @@ const translations = {
         // User Journey Section
         journeyTitle: '五步重塑您的采购体验',
         journeyStep1: 'AI发现',
-        journeyStep1Desc: '通过关键词或“以图搜图”，在AI驱动的全球目录中即时发现产品与供应商',
+        journeyStep1Desc: '通过关键词或图片，在AI驱动下即时对接产品与供应商<',
         journeyStep2: '评估筛选',
-        journeyStep2Desc: '深入查看高清图片、3D模型、技术规格和可持续性认证。进入供应商店铺，审查其资质与专长',
+        journeyStep2Desc: '直观查看包材外观、技术规格与认证，深度了解供应商',
         journeyStep3: '定制设计',
-        journeyStep3Desc: '进入3D工作台，实时编辑产品的颜色、表面工艺、配件并应用Logo，即时预览效果',
+        journeyStep3Desc: '进入3D Mockup，实时编辑颜色、工艺、配件，即时预览效果',
         journeyStep4: '规格确认',
-        journeyStep4Desc: '一键导出高保真渲染图和PDF技术规格表，并保存为可分享的‘3D项目”',
+        journeyStep4Desc: '一键导出高保真渲染图和技术规格表，并保存为云端设计项目',
         journeyStep5: '精准询盘',
-        journeyStep5Desc: '将3D项目链接发送给供应商。供应商收到清晰无误的需求，为您提供精准的源头出厂报价',
+        journeyStep5Desc: '项目发送给供应商并确认需求，为您连接精准的源头',
         
         // Final CTA Section
         finalCtaTitle: '准备好加入美妆包装的未来了吗？',
@@ -134,38 +128,38 @@ const translations = {
         // Solutions Section
         solutionTitle: 'Packvisual: Smarter Supply & Demand Driven by AI',
         solutionSubtitle: 'Three core pillars break down silos to build a transparent, efficient B2B ecosystem.',
-        pillar1Title: 'The Sourcing Engine: AI-Powered Matching',
-        pillar1Subtitle: 'Stop searching, Start connecting.',
-        pillar1Feature1: 'Upload an image or specs; instantly match with qualified global suppliers.',
-        pillar1Feature2: 'Instantly filter and compare options in our extensive packaging database.',
-        pillar1Feature3: 'Connect directly with suppliers for immediate, first-hand quotes.',
-        pillar2Title: 'The 3D Configurator: Real-Time Collaboration',
+        pillar1Title: 'AI powered sourcing engine',
+        pillar1Subtitle: 'Stop searching and Start connecting.',
+        pillar1Feature1: 'Upload image/specs and match qualified global suppliers',
+        pillar1Feature2: 'Instantly filter and compare our extensive packaging database',
+        pillar1Feature3: 'Connect directly with suppliers for immediate, first-hand quotes',
+        pillar2Title: 'Collaborative 3D Configurator',
         pillar2Subtitle: 'Go Beyond Static Images to Dynamic Design.',
-        pillar2Feature1: 'Edit materials, colors, and components in the 3D cloud editor',
+        pillar2Feature1: 'Edit materials, colors and components in our 3D cloud editor',
         pillar2Feature2: 'Share 3D configurations for seamless team collaboration',
-        pillar2Feature3: 'Visualize exact requirements to eliminate unqualified inquiries and secure accurate quotes',
-        pillar3Title: 'Mobile Sales Toolkit: Empower Your Field Team',
-        pillar3Subtitle: 'Bridging the gap between physical sales and digital collaboration',
-        pillar3Feature1: 'Present your full product line on any device during sales visits or trade shows',
-        pillar3Feature2: 'Link smart physical samples directly to cloud 3D models for a true hands-on experience.',
-        pillar3Feature3: 'Accelerate deals with rapid virtual prototyping and precise design communication.',
+        pillar2Feature3: 'Visualize needs, stop unqualified inquiries, get accurate quotes',
+        pillar3Title: 'Field Sales Toolkit',
+        pillar3Subtitle: 'Bridging the gap between physical and digital',
+        pillar3Feature1: 'Present your full product line on any device',
+        pillar3Feature2: 'Link smart physical samples to cloud 3D models',
+        pillar3Feature3: 'Accelerate deals with rapid virtual prototyping and design',
         
         // Core Values Section
-        valueTitle: 'Exclusive Value, Tailored to Your Role',
+        valueTitle: 'Dedicated Value, Tailored to Your Role',
         valueTab1: 'For Brands & Designers',
         valueTab2: 'For Suppliers',
-        valueBrand1Title: 'Indie Brands - 10x Sourcing Efficiency',
-        valueBrand1Desc: 'Find low-MOQ materials or match reference images instantly with AI',
-        valueBrand2Title: 'Enterprise - Compliance & Cost Reduction',
-        valueBrand2Desc: 'Easily verify supplier certifications (ISO, GRS) and connect directly, cutting out middlemen.',
-        valueBrand3Title: 'Design Agencies - What You See Is What You Get',
-        valueBrand3Desc: 'Bring ideas to life with 3D virtual samples. Present and collaborate from anywhere.',
+        valueBrand1Title: '10x Sourcing Efficiency',
+        valueBrand1Desc: 'AI-powered matching for low-MOQ materials and images',
+        valueBrand2Title: 'Compliance-Cost Reduction',
+        valueBrand2Desc: 'Verify supplier certifications and connect directly.',
+        valueBrand3Title: 'True-to-Life Visualization',
+        valueBrand3Desc: 'Create 3D virtual samples. Present and collaborate anywhere.',
         valueSupplier1Title: 'Global Marketing Engine',
-        valueSupplier1Desc: 'Boost your traffic and showcase your capabilities to global buyers',
+        valueSupplier1Desc: 'Attract global buyers and showcase your capabilities.',
         valueSupplier2Title: 'Offline Deal-Closer',
-        valueSupplier2Desc: 'Empower your sales team with a mobile app to finalize custom designs and close deals faster.',
+        valueSupplier2Desc: 'Mobile app - finalize custom designs, close deals faster.',
         valueSupplier3Title: 'High-Quality Leads',
-        valueSupplier3Desc: 'Stop wasting time on bad inquiries. Get qualified leads with precise, AI-configured requirements.',
+        valueSupplier3Desc: 'Get qualified leads with precise, AI-configured requirements.',
         
         // User Journey Section
         journeyTitle: 'Reshape Your Sourcing Experience in 5 Steps',
@@ -181,10 +175,10 @@ const translations = {
         journeyStep5Desc: 'Send your finalized project to suppliers for a precise, qualified quote',
         
         // Final CTA Section
-        finalCtaTitle: 'Ready to Join the Future of Beauty Packaging?',
-        finalCtaSubtitle: 'Whether you\'re a brand seeking the next "it" package or a supplier looking to grow, Packvisual is your ultimate solution.',
-        finalCta1: 'Experience AI Sourcing Now',
-        finalCta2: 'Apply for Free Onboarding',
+        finalCtaTitle: 'The Future of Beauty Packaging Sourcing is Here',
+        finalCtaSubtitle: 'The AI-powered platform connecting innovative brands with qualified global suppliers',
+        finalCta1: 'Start Sourcing with AI',
+        finalCta2: 'Connect with Qualified Buyers',
         
         // Modal Form
         modalTitle: 'Start Your Experience Now',
@@ -880,10 +874,10 @@ function switchLanguage(lang) {
         if (cardDesc) cardDesc.textContent = t.pillar1Desc;
         
         const features = pillar1.querySelectorAll('.feature-list li');
-        if (features[0]) features[0].innerHTML = `<strong>${t.pillar1Feature1}</strong>${t.pillar1Feature1Desc}`;
-        if (features[1]) features[1].innerHTML = `<strong>${t.pillar1Feature2}</strong>${t.pillar1Feature2Desc}`;
-        if (features[2]) features[2].innerHTML = `<strong>${t.pillar1Feature3}</strong>${t.pillar1Feature3Desc}`;
-        if (features[3]) features[3].innerHTML = `<strong>${t.pillar1Feature4}</strong>${t.pillar1Feature4Desc}`;
+        if (features[0]) features[0].innerHTML = `<strong>${t.pillar1Feature1}</strong>`;
+        if (features[1]) features[1].innerHTML = `<strong>${t.pillar1Feature2}</strong>`;
+        if (features[2]) features[2].innerHTML = `<strong>${t.pillar1Feature3}</strong>`;
+        if (features[3]) features[3].innerHTML = `<strong>${t.pillar1Feature4}</strong>`;
     }
     
     // Pillar 2
@@ -897,10 +891,10 @@ function switchLanguage(lang) {
         if (cardDesc) cardDesc.textContent = t.pillar2Desc;
         
         const features = pillar2.querySelectorAll('.feature-list li');
-        if (features[0]) features[0].innerHTML = `<strong>${t.pillar2Feature1}</strong>${t.pillar2Feature1Desc}`;
-        if (features[1]) features[1].innerHTML = `<strong>${t.pillar2Feature2}</strong>${t.pillar2Feature2Desc}`;
-        if (features[2]) features[2].innerHTML = `<strong>${t.pillar2Feature3}</strong>${t.pillar2Feature3Desc}`;
-        if (features[3]) features[3].innerHTML = `<strong>${t.pillar2Feature4}</strong>${t.pillar2Feature4Desc}`;
+        if (features[0]) features[0].innerHTML = `<strong>${t.pillar2Feature1}</strong>`;
+        if (features[1]) features[1].innerHTML = `<strong>${t.pillar2Feature2}</strong>`;
+        if (features[2]) features[2].innerHTML = `<strong>${t.pillar2Feature3}</strong>`;
+        if (features[3]) features[3].innerHTML = `<strong>${t.pillar2Feature4}</strong>`;
     }
     
     // Pillar 3
@@ -914,9 +908,9 @@ function switchLanguage(lang) {
         if (cardDesc) cardDesc.textContent = t.pillar3Desc;
         
         const features = pillar3.querySelectorAll('.feature-list li');
-        if (features[0]) features[0].innerHTML = `<strong>${t.pillar3Feature1}</strong>${t.pillar3Feature1Desc}`;
-        if (features[1]) features[1].innerHTML = `<strong>${t.pillar3Feature2}</strong>${t.pillar3Feature2Desc}`;
-        if (features[2]) features[2].innerHTML = `<strong>${t.pillar3Feature3}</strong>${t.pillar3Feature3Desc}`;
+        if (features[0]) features[0].innerHTML = `<strong>${t.pillar3Feature1}</strong>`;
+        if (features[1]) features[1].innerHTML = `<strong>${t.pillar3Feature2}</strong>`;
+        if (features[2]) features[2].innerHTML = `<strong>${t.pillar3Feature3}</strong>`;
     }
     
     // Core Values Section
