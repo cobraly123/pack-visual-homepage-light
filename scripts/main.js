@@ -114,7 +114,7 @@ const translations = {
         heroCta2: 'For Suppliers | Join us',
         
         // Pain Points Section
-        painTitle: 'Slowed by Sourcing?',
+        painTitle: 'Struggling with traditional packaging sourcing?',
         painSubtitle: 'The sourcing ecosystem is fragmented, opaque, and inefficient.',
         painBrandTitle: 'For Brands & Designers',
         painSupplierTitle: 'For Packaging Suppliers',
