@@ -1,4 +1,4 @@
-// DOM Elements
+// DOM Elements - 使用缓存避免重复查询
 const heroSection = document.getElementById('hero');
 const painPointsSection = document.getElementById('pain-points');
 const solutionsSection = document.getElementById('solutions');
@@ -10,82 +10,84 @@ const finalCtaSection = document.getElementById('final-cta');
 const translations = {
     zh: {
         // Hero Section
-        heroTitle1: '变革美妆包材采购',
-        heroTitle2: '从AI寻源到3D设计，一步到位',
-        heroSubtitle: 'Packvisual，全球美妆包材AI平台，无缝连接品牌、设计师与源头包材商，重塑从灵感到量产的完整周期。',
-        heroCta1: '我是品牌/设计师 | 立即寻源',
-        heroCta2: '我是包材商 | 立即入驻获客',
+        heroTitle1: '告别传统样品，拥抱3D掌上型录',
+        heroTitle2: '为包材企业打造的移动销售工具',
+        heroSubtitle: '实时配置、即时询盘，缩短"意向到样品"的转化周期。',
+        heroCta1: '立即预约演示',
         
         // Pain Points Section
-        painTitle: '传统包装采购，是否让您举步维艰？',
-        painSubtitle: '当前的采购生态碎片化、不透明且极其耗时',
-        painBrandTitle: '对于品牌方与设计师',
-        painSupplierTitle: '对于包材商',
-        painCard1Title: '低效寻源',
-        painCard2Title: '沟通鸿沟',
-        painCard3Title: '合规陷阱',
-        painCard4Title: '获客昂贵',
-        painCard5Title: '曝光受限',
-        painCard6Title: '价值难现',
+        painTitle: '您的销售是否还停留在"上个时代"？',
+        painSubtitle: '',
+        painBrandTitle: '',
+        painSupplierTitle: '',
+        painCard1Title: '信息难查找，客户易流失',
+        painCard1Desc: '关键产品信息难查找，图片细节展示有限<br>影响采购决策',
+        painCard2Title: '创意低效，沟通决策慢',
+        painCard2Desc: '设计创意展示慢，反复沟通修改<br>中断销售黄金时刻',
+        painCard3Title: '实物样瓶，展示不便',
+        painCard3Desc: '样品数量有限，不便展示定制效果<br>客户体验割裂',
         
         // Solutions Section
-        solutionTitle: 'Packvisual：以智能与协同，重构供需两端',
-        solutionSubtitle: '我们通过三大核心支柱，打破信息孤岛，建立高效透明的B2B新生态。',
-        pillar1Title: 'AI智能B2B商机引擎 - 线上寻源',
-        pillar1Subtitle: '不再盲目搜索，直接精准对接',
-        pillar1Feature1: '导入图片或参数，AI智能寻源即刺为您精准匹配全球包材商.',
-        pillar1Feature2: '海量包材数据覆盖所有参数，让您筛选比价一步到位.',
-        pillar1Feature3: '平台直连买家与包材商，打破信息壁垒，让您轻松获取一手报价.',
-        pillar2Title: '革命性的3D配置器 - 在线协同',
-        pillar2Subtitle: '静态浏览启航，动态设计连接',
-        pillar2Feature1: '云端3D包材，实时编辑颜色工艺配件，所见即所得.',
-        pillar2Feature2: '一键分享设计配置，云端协同，提升沟通效率.',
-        pillar2Feature3: '美妆包材视觉化需求，告别无效询盘，精准报价.',
-        pillar3Title: '移动产品销售型录 - 线下赋能',
-        pillar3Subtitle: '打通物理世界与数字协同的最后一公里',
-        pillar3Feature1: '线下销售拜访与展会，移动端轻松呈现全系产品',
-        pillar3Feature2: '智能物理样瓶，直连云端3D展示，客户感受更为直观',
-        pillar3Feature3: '虚拟样瓶快速定制，精准设计表达，加速商机成交',
+        solutionTitle: '四大核心方案，重构包材销售全流程',
+        solutionSubtitle: '从产品展示、移动销售、样品激活到精准询盘，Packvisual产品型录提供一体化闭环',
+        pillar1Title: '可视化产品型录 - 所见即所需',
+        pillar1Subtitle: '采购设计一站式体验，告别传统痛点。',
+        pillar1Desc: '它彻底解决了传统图册信息不全、响应缓慢的痛点，为客户提供"从快速筛选到深度验证"的一站式流畅体验。',
+        pillar1Feature1: '关键信息即时呈现，3秒完成筛选，告别繁琐查找，大幅提升寻源效率',
+        pillar1Feature2: '360°沉浸式探索，即时验证创意。自助配置颜色、工艺、Logo，将数天等待压缩至几分钟。',
+        pillar2Title: '移动赋能销售 - 当场锁定意向',
+        pillar2Subtitle: '手机即移动样品间，告别笨重与卡壳，不错过销售黄金时刻',
+        pillar2Desc: 'Packvisual 将销售的手机变为功能最全的移动样品间，不错过任何一个销售的"黄金时刻"。',
+        pillar2Feature1: '商务问题，专业即时应答，销售无需翻阅资料，产品参数一览无余，快速响应客户疑问。',
+        pillar2Feature2: '设计需求，现场实时响应。 告别回去做图，效果及时呈现，锁定成交。',
+        pillar3Title: '激活物理样品 - 所触即可创',
+        pillar3Subtitle: '物理样品变询盘起点，让真实触感与即时视觉完美融合',
+        pillar3Desc: 'Packvisual 将物理样品的"真实触感"与数字型录的"即时视觉"完美结合。',
+        pillar3Feature1: '物理样品感受真实触感，扫码直连数字样瓶，全方位展示产品细节。',
+        pillar3Feature2: '直观体验，客户通过虚拟模型快速定制并直观验证设计，精准表达需求，有效加速商机成交。',
+
+        pillar4Title: '驱动精准询盘 - 告别模糊沟通',
+        pillar4Subtitle: '打通采购询盘的最后闭环，形成高质量销售线索',
+        pillar4Desc: '',
+        pillar4Feature1: '客户自助配置确认效果后，高效一键导出渲染图和产品配置表。',
+        pillar4Feature2: '销售团队直接获取精准需求，无需反复沟通，快速报价，大幅提升转化效率。',
         
         // Core Values Section
-        valueTitle: '为不同角色的您，创造专属价值',
-        valueTab1: '面向品牌方与设计师',
-        valueTab2: '面向包材商',
-        valueBrand1Title: '新锐品牌 - 寻源提效10X',
-        valueBrand1Desc: '无论是寻找低MOQ创新材料，还是对标参考图片，AI都能帮您秒速匹配源头',
-        valueBrand2Title: '企业采购 - 合规与降本',
-        valueBrand2Desc: '轻松审查供应商认证（ISO, GRS等），直连包材商，告别中间溢价',
-        valueBrand3Title: '设计机构 - 所见即所得',
-        valueBrand3Desc: '3D虚拟样瓶将创意变为现实，云端展示，随时随地沟通创意',
-        valueSupplier1Title: '全球营销引擎',
-        valueSupplier1Desc: '优化店铺流量，向全球买家展示企业实力与创新技术，高效获取线上订单',
-        valueSupplier2Title: '线下签单利器',
-        valueSupplier2Desc: '小程序赋能销售团队，充分展示产品信息，为定制设计高效达成共识，加速成交',
-        valueSupplier3Title: '精准的商业线索',
-        valueSupplier3Desc: '告别无效询盘。我们为您带来的商机都来自AI配置过的精准需求，转化率更高',
-        
-        // User Journey Section
-        journeyTitle: '五步重塑您的采购体验',
-        journeyStep1: 'AI发现',
-        journeyStep1Desc: '通过关键词或图片，在AI驱动下即时对接产品与供应商<',
-        journeyStep2: '评估筛选',
-        journeyStep2Desc: '直观查看包材外观、技术规格与认证，深度了解供应商',
-        journeyStep3: '定制设计',
-        journeyStep3Desc: '进入3D Mockup，实时编辑颜色、工艺、配件，即时预览效果',
-        journeyStep4: '规格确认',
-        journeyStep4Desc: '一键导出高保真渲染图和技术规格表，并保存为云端设计项目',
-        journeyStep5: '精准询盘',
-        journeyStep5Desc: '项目发送给供应商并确认需求，为您连接精准的源头',
+        valueTitle: 'Packvisual产品型录为您带来的商业价值',
+        valueSupplier1Title: '降低营销成本',
+        valueSupplier1Desc: '以产品型录的数字样瓶替代昂贵的实物打样、运输和仓储成本。',
+        valueSupplier2Title: '缩短销售周期',
+        valueSupplier2Desc: '"所见即所得"加速客户决策，提高询盘转化率。',
+        valueSupplier3Title: '提升专业形象',
+        valueSupplier3Desc: '提供超越同行的现代化销售工具，增强客户信任。',
         
         // Final CTA Section
-        finalCtaTitle: '准备好加入美妆包装的未来了吗？',
-        finalCtaSubtitle: '无论您是在寻找下一个爆款包装，还是希望拓展商机的包材商，Packvisual都是您的终极解决方案。',
-        finalCta1: '立即体验AI寻源',
-        finalCta2: '立即申请免费入驻',
+        finalCtaTitle: '准备好革新您的包材销售方式了吗？',
+        finalCtaSubtitle: '我们的解决方案专家将为您展示 Packvisual产品型录 如何帮您降低成本、赢得更多订单。',
+        finalCta1: '立即体验掌上型录',
+        finalCta2: '',
         
         // Modal Form
         modalTitle: '立即开始体验',
         modalSubtitle: '填写以下信息，我们将尽快与您联系',
+        
+        // Demo Form Description
+        demoFormDesc: '我们的专业顾问将为您展示 Packvisual 如何助力您的销售团队实现业绩倍增。',
+        
+        // Footer
+        footerTitle: 'Packvisual',
+        footerDesc: '专业的3D包装展示平台，助力包装供应商数字化转型',
+        footerProduct: '产品功能',
+        footerContact: '联系我们',
+        footer3DShowcase: '3D产品展示',
+        footerSalesTools: '销售工具',
+        footerCoreValue: '核心价值',
+        footerBookDemo: '预约演示',
+        footerEmail: 'contact@packvisual.com',
+        footerCopyright: '© 2024 Packvisual. 保留所有权利。',
+        
+        // Demo Form Description
+        demoFormDesc: '我们的专业顾问将为您展示 Packvisual 如何助力您的销售团队实现业绩倍增。',
         formName: '姓名',
         formCompany: '公司名称',
         formPhone: '联系电话',
@@ -106,83 +108,80 @@ const translations = {
     },
     en: {
         // Hero Section
-        //heroTitle1: 'Revolutionize Beauty Packaging Sourcing',
-        heroTitle1: 'Beauty Sourcing Reimagined',
-        heroTitle2: 'From AI Sourcing to 3D Design',
-        heroSubtitle: 'Global AI platform for beauty packaging. Our connection reshape the journey from inspiration to production.',
-        heroCta1: 'For Brands/Designers | Start Sourcing',
-        heroCta2: 'For Suppliers | Join us',
+        heroTitle1: 'Beyond Physical Samples',
+        heroTitle2: 'Your Mobile Visual Catalog ',
+        heroSubtitle: 'Real-time configuration, instant inquiries. Shorten your "Intent-to-Sample" cycle significantly.',
+        heroCta1: 'Book Demo Now',
         
         // Pain Points Section
-        painTitle: 'Struggling with traditional packaging sourcing?',
-        painSubtitle: 'The sourcing ecosystem is fragmented, opaque, and inefficient.',
-        painBrandTitle: 'For Brands & Designers',
-        painSupplierTitle: 'For Packaging Suppliers',
-        painCard1Title: 'Inefficient Sourcing',
-        painCard2Title: 'Communication Gaps',
-        painCard3Title: 'Compliance Risks',
-        painCard4Title: 'Costly Acquisition',
-        painCard5Title: 'Limited Exposure',
-        painCard6Title: 'Hidden Capabilities',
+        painTitle: 'Is Your Sales Still Stuck in the "Last Era"?',
+        painSubtitle: '',
+        painBrandTitle: '',
+        painSupplierTitle: '',
+        painCard1Title: 'Information Barriers',
+        painCard1Desc: 'Poor access to critical product data creates barriers to purchasing decisions.',
+        painCard2Title: 'Slow Decisions',
+        painCard2Desc: 'Slow showcases create endless back-and-forth, killing sales momentum.',
+        painCard3Title: 'Burdensome Samples',
+        painCard3Desc: 'High sample costs limit your range, costing you opportunities.',
         
         // Solutions Section
-        solutionTitle: 'Packvisual: Smarter Supply & Demand Driven by AI',
-        solutionSubtitle: 'Three core pillars break down silos to build a transparent, efficient B2B ecosystem.',
-        pillar1Title: 'AI powered sourcing engine',
-        pillar1Subtitle: 'Stop searching and Start connecting.',
-        pillar1Feature1: 'Upload image/specs and match qualified global suppliers',
-        pillar1Feature2: 'Instantly filter and compare our extensive packaging database',
-        pillar1Feature3: 'Connect directly with suppliers for immediate, first-hand quotes',
-        pillar2Title: 'Collaborative 3D Configurator',
-        pillar2Subtitle: 'Go Beyond Static Images to Dynamic Design.',
-        pillar2Feature1: 'Edit materials, colors and components in our 3D cloud editor',
-        pillar2Feature2: 'Share 3D configurations for seamless team collaboration',
-        pillar2Feature3: 'Visualize needs, stop unqualified inquiries, get accurate quotes',
-        pillar3Title: 'Field Sales Toolkit',
-        pillar3Subtitle: 'Bridging the gap between physical and digital',
-        pillar3Feature1: 'Present your full product line on any device',
-        pillar3Feature2: 'Link smart physical samples to cloud 3D models',
-        pillar3Feature3: 'Accelerate deals with rapid virtual prototyping and design',
+        solutionTitle: 'Transform How You Sell Packaging',
+        solutionSubtitle: 'From product discovery and mobile sales to sample activation and precise inquiries, Packvisual Catalog provides a complete, closed-loop solution.',
+        pillar1Title: 'Visual Catalog：See & Verify Instantly',
+        pillar1Subtitle: 'The All-in-One Sourcing & Design Experience',
+        pillar1Desc: '',
+        pillar1Feature1: 'Key info at a glance. Find & filter in seconds for faster sourcing.',
+        pillar1Feature2: 'Immersive 360° configuration. Validate designs in minutes, not days.',
+        pillar2Title: 'Mobile Sales：Capture Intent Live',
+        pillar2Subtitle: 'Digital Showroom: Ditch the bulk & lag, never miss a sale.',
+        pillar2Desc: '',
+        pillar2Feature1: 'Instant, Expert Answers: With all data at your fingertips, there\'s no more "I\'ll get back to you."',
+        pillar2Feature2: 'Live Design Configuration: Configure changes live, right in front of the client, to close the deal on the spot.',
+        pillar3Title: 'Smart Sample Activation: Touch to Create',
+        pillar3Subtitle: 'Turn physical samples into digital inquiries.',
+        pillar3Desc: '',
+        pillar3Feature1: 'Scan the sample\'s QR code to launch its interactive digital twin and intuitively validate designs.',
+        pillar3Feature2: 'Bridge the gap between the "real touch" of physical samples and the "instant visuals" of your digital catalog.',
+        pillar4Title: 'Precise Inquiries: End Vague Communication',
+        pillar4Subtitle: 'Close the loop and capture high-quality sales leads',
+        pillar4Desc: '',
+        pillar4Feature1: 'Clients confirm, then instantly export renders & specs.',
+        pillar4Feature2: 'Get precise requirements for faster quotes and higher conversion. No more guesswork.',
         
         // Core Values Section
-        valueTitle: 'Dedicated Value, Tailored to Your Role',
-        valueTab1: 'For Brands & Designers',
-        valueTab2: 'For Suppliers',
-        valueBrand1Title: '10x Sourcing Efficiency',
-        valueBrand1Desc: 'AI-powered matching for low-MOQ materials and images',
-        valueBrand2Title: 'Compliance-Cost Reduction',
-        valueBrand2Desc: 'Verify supplier certifications and connect directly.',
-        valueBrand3Title: 'True-to-Life Visualization',
-        valueBrand3Desc: 'Create 3D virtual samples. Present and collaborate anywhere.',
-        valueSupplier1Title: 'Global Marketing Engine',
-        valueSupplier1Desc: 'Attract global buyers and showcase your capabilities.',
-        valueSupplier2Title: 'Offline Deal-Closer',
-        valueSupplier2Desc: 'Mobile app - finalize custom designs, close deals faster.',
-        valueSupplier3Title: 'High-Quality Leads',
-        valueSupplier3Desc: 'Get qualified leads with precise, AI-configured requirements.',
-        
-        // User Journey Section
-        journeyTitle: 'Reshape Your Sourcing Experience in 5 Steps',
-        journeyStep1: 'AI Discovery',
-        journeyStep1Desc: 'Use keywords or images to instantly find products and suppliers',
-        journeyStep2: 'Evaluate & Filter',
-        journeyStep2Desc: 'Review specs, certifications, and supplier profiles in detail',
-        journeyStep3: '3D Customization',
-        journeyStep3Desc: 'Use the 3D Mockup to edit colors, finishes, and components in real-time',
-        journeyStep4: 'Finalize Specs',
-        journeyStep4Desc: 'Export high-res renders and tech specs. Save your project to the cloud',
-        journeyStep5: 'Send Inquiry',
-        journeyStep5Desc: 'Send your finalized project to suppliers for a precise, qualified quote',
+        valueTitle: 'The Packvisual Catalog Advantage',
+        valueSupplier1Title: 'Reduce Sampling Costs',
+        valueSupplier1Desc: 'Replace expensive physical sampling, shipping and storage costs with interactive digital twins.',
+        valueSupplier2Title: 'Accelerate Your Sales Cycle',
+        valueSupplier2Desc: 'Our "What You See Is What You Get" experience speeds up client decisions and boosts conversion.',
+        valueSupplier3Title: 'Enhance Your Professional Image',
+        valueSupplier3Desc: 'Build client trust with modern sales tools that put you ahead of the competition.',
         
         // Final CTA Section
-        finalCtaTitle: 'The Future of Beauty Packaging Sourcing is Here',
-        finalCtaSubtitle: 'The AI-powered platform connecting innovative brands with qualified global suppliers',
-        finalCta1: 'Start Sourcing with AI',
-        finalCta2: 'Connect with Qualified Buyers',
+        finalCtaTitle: 'Ready to Join US?',
+        finalCtaSubtitle: 'Our solution experts will show you how Packvisual catalog helps you.',
+        finalCta1: 'Experience Catalog Now',
+        finalCta2: '',
         
         // Modal Form
         modalTitle: 'Start Your Experience Now',
         modalSubtitle: 'Fill in the information below and we\'ll contact you soon',
+        
+        // Demo Form Description
+        demoFormDesc: 'Our professional consultants will show you how Packvisual helps your sales team achieve exponential growth.',
+        
+        // Footer
+        footerTitle: 'Packvisual',
+        footerDesc: 'Professional 3D packaging display platform, helping packaging suppliers with digital transformation',
+        footerProduct: 'Product Features',
+        footerContact: 'Contact Us',
+        footer3DShowcase: '3D Product Showcase',
+        footerSalesTools: 'Sales Tools',
+        footerCoreValue: 'Core Values',
+        footerBookDemo: 'Book Demo',
+        footerEmail: 'contact@packvisual.com',
+        footerCopyright: '© 2024 Packvisual. All rights reserved.',
         formName: 'Name',
         formCompany: 'Company Name',
         formPhone: 'Phone',
@@ -206,21 +205,22 @@ const translations = {
 // Current language
 let currentLang = 'zh';
 
-// Smooth scrolling for CTA buttons
-document.querySelectorAll('.btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Add click effect
-        this.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-            this.style.transform = '';
-        }, 150);
-        
-        // Open lead form modal for all buttons
-        openLeadFormModal();
-    });
-});
+// 使用事件委托优化按钮点击处理
+document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.btn');
+    if (!btn) return;
+    
+    e.preventDefault();
+    
+    // 添加点击效果
+    btn.style.transform = 'scale(0.98)';
+    setTimeout(() => {
+        btn.style.transform = '';
+    }, 150);
+    
+    // 打开表单模态框
+    openLeadFormModal();
+}, { passive: false });
 
 // Intersection Observer for scroll animations
 const observerOptions = {
@@ -242,56 +242,81 @@ animateElements.forEach(el => {
     observer.observe(el);
 });
 
-// Tab System
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabPanels = document.querySelectorAll('.tab-panel');
-
-tabButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const targetTab = this.getAttribute('data-tab');
-        
-        // Remove active class from all buttons and panels
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabPanels.forEach(panel => panel.classList.remove('active'));
-        
-        // Add active class to clicked button and corresponding panel
-        this.classList.add('active');
-        const targetPanel = document.getElementById(targetTab);
-        if (targetPanel) {
-            targetPanel.classList.add('active');
-        }
-        
-        // Add smooth transition effect
-        const container = this.closest('.tabs-container');
+// 优化的Tab系统（使用事件委托）
+document.addEventListener('click', function(e) {
+    const tabButton = e.target.closest('.tab-button');
+    if (!tabButton) return;
+    
+    const targetTab = tabButton.getAttribute('data-tab');
+    if (!targetTab) return;
+    
+    // 移除所有活动状态
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+    
+    // 添加活动状态
+    tabButton.classList.add('active');
+    const targetPanel = document.getElementById(targetTab);
+    if (targetPanel) {
+        targetPanel.classList.add('active');
+    }
+    
+    // 平滑过渡效果
+    const container = tabButton.closest('.tabs-container');
+    if (container) {
         container.style.transform = 'scale(0.98)';
         setTimeout(() => {
             container.style.transform = '';
         }, 150);
-    });
+    }
 });
 
-// Parallax effect for hero background
-window.addEventListener('scroll', () => {
+// 节流函数优化性能
+function throttle(func, wait) {
+    let timeout;
+    let previous = 0;
+    return function(...args) {
+        const now = Date.now();
+        const remaining = wait - (now - previous);
+        if (remaining <= 0 || remaining > wait) {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+            previous = now;
+            func.apply(this, args);
+        } else if (!timeout) {
+            timeout = setTimeout(() => {
+                previous = Date.now();
+                timeout = null;
+                func.apply(this, args);
+            }, remaining);
+        }
+    };
+}
+
+// 优化的视差效果
+const parallaxHandler = throttle(() => {
     const scrolled = window.pageYOffset;
     const rate = scrolled * -0.5;
     const heroBg = document.querySelector('.geometric-bg');
     
-    if (heroBg && scrolled < heroSection.offsetHeight) {
+    if (heroBg && heroSection && scrolled < heroSection.offsetHeight) {
         heroBg.style.transform = `translateY(${rate}px)`;
     }
-});
+}, 16); // ~60fps
 
-// Navbar scroll effect (if navbar is added later)
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', parallaxHandler, { passive: true });
+
+// 导航栏滚动效果（使用节流优化）
+const navbarScrollHandler = throttle(() => {
     const navbar = document.querySelector('.navbar');
     if (navbar) {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+        navbar.classList.toggle('scrolled', window.scrollY > 100);
     }
-});
+}, 100);
+
+window.addEventListener('scroll', navbarScrollHandler, { passive: true });
 
 // Counter animation for statistics (if added later)
 function animateCounters() {
@@ -316,16 +341,8 @@ function animateCounters() {
     });
 }
 
-// 3D hover effects for cards
-document.querySelectorAll('.pain-card, .value-item, .solution-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px) rotateX(5deg)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) rotateX(0)';
-    });
-});
+// 使用CSS类替代内联样式，提升性能
+// 3D hover效果通过CSS处理，无需JavaScript
 
 // Timeline progression effect
 function initTimelineEffect() {
@@ -577,7 +594,7 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Performance optimization: Debounce scroll events
+// 防抖函数（用于搜索等场景）
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -590,50 +607,66 @@ function debounce(func, wait) {
     };
 }
 
-// Apply debounce to scroll events
-const debouncedScroll = debounce(() => {
-    // Scroll-dependent functions can be added here
-}, 16); // ~60fps
-
-window.addEventListener('scroll', debouncedScroll);
-
-// Lazy loading for images (if images are added later)
+// 优化的图片懒加载（支持原生loading="lazy"和data-src）
 function initLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
+    // 处理使用data-src的图片（向后兼容）
+    const dataSrcImages = document.querySelectorAll('img[data-src]');
+    if (dataSrcImages.length > 0) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, { rootMargin: '50px' });
+        
+        dataSrcImages.forEach(img => imageObserver.observe(img));
+    }
     
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
+    // 处理使用原生loading="lazy"的图片，添加加载完成标记
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    lazyImages.forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => {
+                img.classList.add('loaded');
+            });
+            img.addEventListener('error', () => {
+                img.classList.add('loaded'); // 即使加载失败也显示
+            });
+        }
     });
-    
-    images.forEach(img => imageObserver.observe(img));
 }
 
-// Initialize all functions when DOM is loaded
+// 优化的初始化函数
+function initAnimations() {
+    const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .cta-group');
+    heroElements.forEach((el, index) => {
+        setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, index * 200);
+    });
+}
+
+// DOM加载完成后初始化
 document.addEventListener('DOMContentLoaded', () => {
-    initMobileMenu();
-    initLazyLoading();
-    initTimelineEffect(); // Initialize timeline effect
-    
-    // Add CSS class for loaded state
+    // 添加加载状态类
     document.body.classList.add('loaded');
     
-    // Start any initial animations
-    setTimeout(() => {
-        const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .cta-group');
-        heroElements.forEach((el, index) => {
-            setTimeout(() => {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            }, index * 200);
-        });
-    }, 500);
+    // 初始化功能
+    initMobileMenu();
+    initLazyLoading();
+    initTimelineEffect();
+    
+    // 延迟启动动画，确保DOM完全渲染
+    requestAnimationFrame(() => {
+        setTimeout(initAnimations, 100);
+    });
 });
 
 // Error handling
@@ -675,31 +708,32 @@ function closeLeadFormModal() {
     }
 }
 
-// Modal event listeners
-document.addEventListener('DOMContentLoaded', () => {
+// 优化的模态框事件处理（使用事件委托）
+document.addEventListener('click', function(e) {
     const modal = document.getElementById('leadFormModal');
-    const closeBtn = modal?.querySelector('.modal-close');
-    const overlay = modal?.querySelector('.modal-overlay');
-    const form = document.getElementById('leadForm');
+    if (!modal) return;
     
-    // Close modal on close button click
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeLeadFormModal);
+    const closeBtn = e.target.closest('.modal-close');
+    const overlay = e.target.closest('.modal-overlay');
+    
+    if (closeBtn || overlay) {
+        closeLeadFormModal();
     }
-    
-    // Close modal on overlay click
-    if (overlay) {
-        overlay.addEventListener('click', closeLeadFormModal);
-    }
-    
-    // Close modal on ESC key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal?.classList.contains('active')) {
+});
+
+// ESC键关闭模态框
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('leadFormModal');
+        if (modal?.classList.contains('active')) {
             closeLeadFormModal();
         }
-    });
-    
-    // Form submission
+    }
+});
+
+// 表单提交处理
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('leadForm');
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -777,6 +811,102 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error('Form submission error:', error);
                 showNotification('表单已保存，我们会尽快与您联系。', 'success');
+            } finally {
+                // 重新启用提交按钮
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '提交';
+                }
+            }
+        });
+    }
+    
+    // Demo表单提交处理
+    const demoForm = document.getElementById('demoForm');
+    if (demoForm) {
+        demoForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validate form
+            if (!validateForm(demoForm)) {
+                return;
+            }
+            
+            // Disable submit button to prevent double submission
+            const submitBtn = demoForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = currentLang === 'zh' ? '提交中...' : 'Submitting...';
+            
+            // Get form data
+            const formData = new FormData(demoForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            console.log('Demo form data:', data);
+            
+            // Prepare email content
+            const emailSubject = '新的产品演示申请 - PackVisual';
+            const emailBody = `
+您收到一条新的产品演示申请：
+
+姓名：${data.name}
+公司名称：${data.company}
+联系电话：${data.phone}
+
+提交时间：${new Date().toLocaleString(currentLang === 'zh' ? 'zh-CN' : 'en-US')}
+            `.trim();
+            
+            try {
+                console.log('正在发送演示申请...', data);
+                
+                // Send email using FormSubmit service
+                const response = await fetch('https://formsubmit.co/ajax/liyong@realibox.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _subject: emailSubject,
+                        _template: 'box',
+                        _captcha: 'false',
+                        name: data.name,
+                        company: data.company,
+                        phone: data.phone,
+                        submittedAt: new Date().toLocaleString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
+                        formType: 'Demo Request'
+                    })
+                });
+                
+                console.log('Demo form response status:', response.status);
+                const result = await response.json();
+                console.log('Demo form response data:', result);
+                
+                if (response.ok) {
+                    console.log('Demo form submitted successfully:', data);
+                    showNotification(
+                        currentLang === 'zh' ? '感谢您的申请！我们会尽快与您联系安排演示。' : 'Thank you for your request! We will contact you soon to schedule a demo.',
+                        'success'
+                    );
+                    demoForm.reset(); // Clear form after successful submission
+                } else {
+                    console.error('演示申请提交失败，响应:', result);
+                    showNotification(
+                        currentLang === 'zh' ? '申请已提交，但邮件可能未成功发送。我们会尽快处理。' : 'Request submitted, but email may not have been sent successfully. We will process it soon.',
+                        'success'
+                    );
+                }
+            } catch (error) {
+                console.error('Demo form submission error:', error);
+                showNotification(
+                    currentLang === 'zh' ? '申请已保存，我们会尽快与您联系。' : 'Request saved, we will contact you soon.',
+                    'success'
+                );
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
             }
         });
     }
@@ -828,7 +958,7 @@ function switchLanguage(lang) {
     if (ctaBtns[1]) ctaBtns[1].textContent = t.heroCta2;
     
     // Pain Points Section
-    const painTitle = document.querySelector('.pain-points .section-title');
+    const painTitle = document.querySelector('.pain-points-new .section-title');
     if (painTitle) painTitle.textContent = t.painTitle;
     
     const painSubtitle = document.querySelector('.pain-points .section-subtitle');
@@ -838,21 +968,18 @@ function switchLanguage(lang) {
     if (painSectionTitles[0]) painSectionTitles[0].textContent = t.painBrandTitle;
     if (painSectionTitles[1]) painSectionTitles[1].textContent = t.painSupplierTitle;
     
-    const painCards = document.querySelectorAll('.pain-card-item');
+    const painCards = document.querySelectorAll('.pain-grid-new .pain-card-new');
     const painCardData = [
         {title: t.painCard1Title, desc: t.painCard1Desc},
         {title: t.painCard2Title, desc: t.painCard2Desc},
-        {title: t.painCard3Title, desc: t.painCard3Desc},
-        {title: t.painCard4Title, desc: t.painCard4Desc},
-        {title: t.painCard5Title, desc: t.painCard5Desc},
-        {title: t.painCard6Title, desc: t.painCard6Desc}
+        {title: t.painCard3Title, desc: t.painCard3Desc}
     ];
     painCards.forEach((card, index) => {
         if (painCardData[index]) {
-            const strong = card.querySelector('strong');
-            const p = card.querySelector('p');
-            if (strong) strong.textContent = painCardData[index].title;
-            if (p) p.textContent = painCardData[index].desc;
+            const title = card.querySelector('.pain-title-new');
+            const desc = card.querySelector('.pain-desc-new');
+            if (title) title.textContent = painCardData[index].title;
+            if (desc) desc.innerHTML = painCardData[index].desc;
         }
     });
     
@@ -874,10 +1001,10 @@ function switchLanguage(lang) {
         if (cardDesc) cardDesc.textContent = t.pillar1Desc;
         
         const features = pillar1.querySelectorAll('.feature-list li');
-        if (features[0]) features[0].innerHTML = `<strong>${t.pillar1Feature1}</strong>`;
-        if (features[1]) features[1].innerHTML = `<strong>${t.pillar1Feature2}</strong>`;
-        if (features[2]) features[2].innerHTML = `<strong>${t.pillar1Feature3}</strong>`;
-        if (features[3]) features[3].innerHTML = `<strong>${t.pillar1Feature4}</strong>`;
+        if (features[0]) features[0].innerHTML = `${t.pillar1Feature1}`;
+        if (features[1]) features[1].innerHTML = `${t.pillar1Feature2}`;
+        if (features[2]) features[2].innerHTML = `${t.pillar1Feature3}`;
+        if (features[3]) features[3].innerHTML = `${t.pillar1Feature4}`;
     }
     
     // Pillar 2
@@ -891,10 +1018,10 @@ function switchLanguage(lang) {
         if (cardDesc) cardDesc.textContent = t.pillar2Desc;
         
         const features = pillar2.querySelectorAll('.feature-list li');
-        if (features[0]) features[0].innerHTML = `<strong>${t.pillar2Feature1}</strong>`;
-        if (features[1]) features[1].innerHTML = `<strong>${t.pillar2Feature2}</strong>`;
-        if (features[2]) features[2].innerHTML = `<strong>${t.pillar2Feature3}</strong>`;
-        if (features[3]) features[3].innerHTML = `<strong>${t.pillar2Feature4}</strong>`;
+        if (features[0]) features[0].innerHTML = `${t.pillar2Feature1}`;
+        if (features[1]) features[1].innerHTML = `${t.pillar2Feature2}`;
+        if (features[2]) features[2].innerHTML = `${t.pillar2Feature3}`;
+        if (features[3]) features[3].innerHTML = `${t.pillar2Feature4}`;
     }
     
     // Pillar 3
@@ -908,53 +1035,43 @@ function switchLanguage(lang) {
         if (cardDesc) cardDesc.textContent = t.pillar3Desc;
         
         const features = pillar3.querySelectorAll('.feature-list li');
-        if (features[0]) features[0].innerHTML = `<strong>${t.pillar3Feature1}</strong>`;
-        if (features[1]) features[1].innerHTML = `<strong>${t.pillar3Feature2}</strong>`;
-        if (features[2]) features[2].innerHTML = `<strong>${t.pillar3Feature3}</strong>`;
+        if (features[0]) features[0].innerHTML = `${t.pillar3Feature1}`;
+        if (features[1]) features[1].innerHTML = `${t.pillar3Feature2}`;
+        if (features[2]) features[2].innerHTML = `${t.pillar3Feature3}`;
+    }
+
+    const pillar4 = document.querySelectorAll('.solution-item')[3];
+    if (pillar4) {
+        const cardTitle = pillar4.querySelector('.card-title');
+        const cardSubtitle = pillar4.querySelector('.card-subtitle');
+        const cardDesc = pillar4.querySelector('.card-desc');
+        if (cardTitle) cardTitle.textContent = t.pillar4Title;
+        if (cardSubtitle) cardSubtitle.textContent = t.pillar4Subtitle;
+        if (cardDesc) cardDesc.textContent = t.pillar4Desc;
+        
+        const features = pillar4.querySelectorAll('.feature-list li');
+        if (features[0]) features[0].innerHTML = `${t.pillar4Feature1}`;
+        if (features[1]) features[1].innerHTML = `${t.pillar4Feature2}`;
+        if (features[2]) features[2].innerHTML = `${t.pillar4Feature3}`;
     }
     
     // Core Values Section
-    const valueTitle = document.querySelector('.core-values .section-title');
+    const valueTitle = document.querySelector('.core-values-new .section-title');
     if (valueTitle) valueTitle.textContent = t.valueTitle;
     
-    const tabButtons = document.querySelectorAll('.tab-button');
-    if (tabButtons[0]) tabButtons[0].textContent = t.valueTab1;
-    if (tabButtons[1]) tabButtons[1].textContent = t.valueTab2;
-    
-    // Brand Tab
-    const brandTab = document.getElementById('brands');
-    if (brandTab) {
-        const valueItems = brandTab.querySelectorAll('.value-item');
-        if (valueItems[0]) {
-            valueItems[0].querySelector('h4').textContent = t.valueBrand1Title;
-            valueItems[0].querySelector('p').textContent = t.valueBrand1Desc;
-        }
-        if (valueItems[1]) {
-            valueItems[1].querySelector('h4').textContent = t.valueBrand2Title;
-            valueItems[1].querySelector('p').textContent = t.valueBrand2Desc;
-        }
-        if (valueItems[2]) {
-            valueItems[2].querySelector('h4').textContent = t.valueBrand3Title;
-            valueItems[2].querySelector('p').textContent = t.valueBrand3Desc;
-        }
+    // New three-column core values grid
+    const coreValueCards = document.querySelectorAll('.core-values-grid .value-card-new');
+    if (coreValueCards[0]) {
+        coreValueCards[0].querySelector('h3').textContent = t.valueSupplier1Title;
+        coreValueCards[0].querySelector('p').textContent = t.valueSupplier1Desc;
     }
-    
-    // Supplier Tab
-    const supplierTab = document.getElementById('suppliers');
-    if (supplierTab) {
-        const valueItems = supplierTab.querySelectorAll('.value-item');
-        if (valueItems[0]) {
-            valueItems[0].querySelector('h4').textContent = t.valueSupplier1Title;
-            valueItems[0].querySelector('p').textContent = t.valueSupplier1Desc;
-        }
-        if (valueItems[1]) {
-            valueItems[1].querySelector('h4').textContent = t.valueSupplier2Title;
-            valueItems[1].querySelector('p').textContent = t.valueSupplier2Desc;
-        }
-        if (valueItems[2]) {
-            valueItems[2].querySelector('h4').textContent = t.valueSupplier3Title;
-            valueItems[2].querySelector('p').textContent = t.valueSupplier3Desc;
-        }
+    if (coreValueCards[1]) {
+        coreValueCards[1].querySelector('h3').textContent = t.valueSupplier2Title;
+        coreValueCards[1].querySelector('p').textContent = t.valueSupplier2Desc;
+    }
+    if (coreValueCards[2]) {
+        coreValueCards[2].querySelector('h3').textContent = t.valueSupplier3Title;
+        coreValueCards[2].querySelector('p').textContent = t.valueSupplier3Desc;
     }
     
     // User Journey Section
@@ -984,11 +1101,10 @@ function switchLanguage(lang) {
     
     const finalCtaSubtitle = document.querySelector('.final-cta .cta-subtitle');
     if (finalCtaSubtitle) finalCtaSubtitle.textContent = t.finalCtaSubtitle;
-    
+
     const finalCtaBtns = document.querySelectorAll('.final-cta .cta-group .btn');
     if (finalCtaBtns[0]) finalCtaBtns[0].textContent = t.finalCta1;
-    if (finalCtaBtns[1]) finalCtaBtns[1].textContent = t.finalCta2;
-    
+
     // Modal Form
     const modalTitle = document.querySelector('.modal-title');
     if (modalTitle) modalTitle.textContent = t.modalTitle;
@@ -1024,32 +1140,70 @@ function switchLanguage(lang) {
     const submitBtn = document.querySelector('.lead-form button[type="submit"]');
     if (submitBtn) submitBtn.textContent = t.formSubmit;
     
+    // Update new demo form labels
+    const demoFormLabels = document.querySelectorAll('.demo-form label');
+    if (demoFormLabels[0]) demoFormLabels[0].innerHTML = `${t.formName} <span class="required">*</span>`;
+    if (demoFormLabels[1]) demoFormLabels[1].innerHTML = `${t.formCompany} <span class="required">*</span>`;
+    if (demoFormLabels[2]) demoFormLabels[2].innerHTML = `${t.formPhone} <span class="required">*</span>`;
+    
+    const demoFormInputs = document.querySelectorAll('.demo-form input');
+    if (demoFormInputs[0]) demoFormInputs[0].placeholder = t.formNamePlaceholder;
+    if (demoFormInputs[1]) demoFormInputs[1].placeholder = t.formCompanyPlaceholder;
+    if (demoFormInputs[2]) demoFormInputs[2].placeholder = t.formPhonePlaceholder;
+    
+    const demoSubmitBtn = document.querySelector('.demo-form button[type="submit"]');
+    if (demoSubmitBtn) demoSubmitBtn.textContent = t.formSubmit;
+    
+    // Update demo form description
+    const demoFormDesc = document.querySelector('.demo-form-description');
+    if (demoFormDesc) demoFormDesc.textContent = t.demoFormDesc;
+    
+    // Footer translations
+    const footerTitle = document.querySelector('.footer-title');
+    if (footerTitle) footerTitle.textContent = t.footerTitle;
+    
+    const footerDesc = document.querySelector('.footer-desc');
+    if (footerDesc) footerDesc.textContent = t.footerDesc;
+    
+    const footerSubtitle = document.querySelectorAll('.footer-subtitle');
+    if (footerSubtitle[0]) footerSubtitle[0].textContent = t.footerProduct;
+    if (footerSubtitle[1]) footerSubtitle[1].textContent = t.footerContact;
+    
+    const footerLinks = document.querySelectorAll('.footer-links a');
+    if (footerLinks[0]) footerLinks[0].textContent = t.footer3DShowcase;
+    if (footerLinks[1]) footerLinks[1].textContent = t.footerSalesTools;
+    if (footerLinks[2]) footerLinks[2].textContent = t.footerCoreValue;
+    if (footerLinks[3]) footerLinks[3].textContent = t.footerBookDemo;
+    if (footerLinks[4]) footerLinks[4].textContent = t.footerEmail;
+    
+    // Footer copyright
+    const footerCopyright = document.querySelector('.footer-copyright');
+    if (footerCopyright) footerCopyright.textContent = t.footerCopyright;
+    
     // Save language preference
     localStorage.setItem('preferredLanguage', lang);
 }
 
-// Initialize language switcher
+// 优化的语言切换（使用事件委托）
+document.addEventListener('click', function(e) {
+    const langBtn = e.target.closest('.lang-btn');
+    if (!langBtn) return;
+    
+    const lang = langBtn.dataset.lang;
+    if (lang && lang !== currentLang) {
+        switchLanguage(lang);
+    }
+});
+
+// 初始化语言设置
 document.addEventListener('DOMContentLoaded', () => {
-    // Check for saved language preference
     const savedLang = localStorage.getItem('preferredLanguage') || 'zh';
     
-    // Set initial language
     if (savedLang !== 'zh') {
         switchLanguage(savedLang);
     } else {
-        // Set Chinese as active by default
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === 'zh');
         });
     }
-    
-    // Add event listeners to language buttons
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.dataset.lang;
-            if (lang !== currentLang) {
-                switchLanguage(lang);
-            }
-        });
-    });
 });
